@@ -1,303 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Token Kanjoos</title>
 
-<meta name="description"
-content="Because tokens are the new fuel. Move conversations between Claude and Gemini. Build long-term memory. Reduce token waste.">
+<meta name="description" content="We've all become the manual bridge between AI models. Stop paying to remind AI who you are.">
 
-<meta property="og:title"
-content="Token Kanjoos">
+<meta property="og:title" content="Token Kanjoos">
+<meta property="og:description" content="We've all become the manual bridge between AI models.">
+<meta property="og:image" content="https://tokenkanjoos.me/og-image.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tokenkanjoos.me">
 
-<meta property="og:description"
-content="Stop paying to remind AI who you are. Move conversations between Claude and Gemini. Build long-term memory.">
+<meta name="twitter:card" content="summary_large_image">
 
-<meta property="og:type"
-content="website">
-
-<meta property="og:url"
-content="https://tokenkanjoos.me">
-
-<meta property="og:image"
-content="https://tokenkanjoos.me/og-image.jpg">
-
-<meta property="og:image:width"
-content="1200">
-
-<meta property="og:image:height"
-content="630">
-
-<meta name="twitter:card"
-content="summary_large_image">
-
-<meta name="twitter:title"
-content="Token Kanjoos">
-
-<meta name="twitter:description"
-content="Because tokens are the new fuel.">
-
-<meta name="twitter:image"
-content="https://tokenkanjoos.me/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-  --bg:#faf8f2;
-  --text:#1f2937;
-  --accent:#1f6b4f;
-  --card:#ffffff;
+--bg:#0a0f1c;
+--card:#121826;
+--text:#ffffff;
+--muted:#9aa4b2;
+--accent:#63e6be;
 }
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.7;
+font-family:Inter,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7;
 }
 
 .container{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 24px 80px;
+width:min(1200px,92%);
+margin:auto;
+}
+
+section{
+padding:100px 0;
 }
 
 .hero{
-  min-height:70vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+min-height:100vh;
+display:flex;
+align-items:center;
 }
 
 .hero h1{
-  font-size:clamp(4rem,10vw,8rem);
-  line-height:.9;
-  margin-bottom:24px;
-  letter-spacing:-3px;
+font-size:clamp(4rem,12vw,10rem);
+line-height:.9;
+font-weight:900;
+margin-bottom:20px;
 }
 
-.tagline{
-  font-size:clamp(1.3rem,2vw,1.8rem);
-  color:#4b5563;
-  max-width:700px;
+.hero .domain{
+color:var(--accent);
+font-weight:700;
+font-size:1.1rem;
+margin-bottom:30px;
 }
 
-.manifesto{
-  margin-top:40px;
-  max-width:850px;
-  font-size:1.2rem;
+.hero .headline{
+font-size:clamp(1.5rem,3vw,2.6rem);
+font-weight:700;
+max-width:900px;
+margin-bottom:20px;
 }
 
-.hero-buttons{
-  margin-top:40px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
+.hero p{
+max-width:750px;
+font-size:1.15rem;
+color:var(--muted);
+margin-bottom:10px;
 }
 
-.button{
-  display:inline-block;
-  background:#111827;
-  color:white;
-  text-decoration:none;
-  padding:14px 24px;
-  border-radius:999px;
-  font-weight:600;
+.buttons{
+margin-top:40px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
-.button.secondary{
-  background:white;
-  color:#111827;
-  border:1px solid #ddd;
+.btn{
+padding:16px 28px;
+border-radius:999px;
+text-decoration:none;
+font-weight:700;
+display:inline-block;
 }
 
-.section{
-  margin-top:120px;
+.btn-primary{
+background:var(--accent);
+color:black;
 }
 
-.section h2{
-  font-size:3rem;
-  margin-bottom:20px;
+.btn-secondary{
+border:1px solid rgba(255,255,255,.15);
+color:white;
 }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-  gap:32px;
+.section-title{
+font-size:clamp(2.2rem,5vw,4rem);
+margin-bottom:50px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
 }
 
 .card{
-  background:white;
-  padding:40px;
-  border-radius:28px;
-  box-shadow:0 10px 40px rgba(0,0,0,.05);
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:40px;
+border-radius:28px;
+backdrop-filter:blur(20px);
 }
 
 .price{
-  font-size:3rem;
-  font-weight:700;
-  color:var(--accent);
+font-size:3rem;
+font-weight:900;
+color:var(--accent);
 }
 
 .card h3{
-  font-size:2rem;
-  margin:10px 0 20px;
-}
-
-.card ul{
-  padding-left:20px;
+font-size:2rem;
+margin:15px 0 25px;
 }
 
 .card li{
-  margin-bottom:10px;
+margin-bottom:12px;
+color:var(--muted);
+}
+
+.origin{
+background:rgba(255,255,255,.05);
+padding:40px;
+border-radius:28px;
+}
+
+.quote{
+font-size:2rem;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.origin p{
+color:var(--muted);
+margin-bottom:20px;
+}
+
+.origin img{
+width:100%;
+border-radius:20px;
+margin-top:30px;
+}
+
+.origin a{
+color:var(--accent);
+font-weight:700;
+text-decoration:none;
 }
 
 .video-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-  gap:24px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
 }
 
-.video-card{
-  background:white;
-  border-radius:24px;
-  padding:32px;
+.video{
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:28px;
 }
 
-.video-card a{
-  color:#2563eb;
-  text-decoration:none;
-  font-weight:700;
+.video img{
+width:100%;
+border-radius:18px;
+margin-bottom:20px;
+transition:.3s;
+}
+
+.video:hover img{
+transform:scale(1.02);
+}
+
+.video h3{
+margin-bottom:10px;
+}
+
+.video p{
+color:var(--muted);
+margin-bottom:15px;
+}
+
+.video a{
+color:var(--accent);
+font-weight:700;
+text-decoration:none;
 }
 
 .payment{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
 }
 
 @media(max-width:900px){
-  .payment{
-    grid-template-columns:1fr;
-  }
+.payment{
+grid-template-columns:1fr;
+}
 }
 
-.qr{
-  background:white;
-  padding:30px;
-  border-radius:28px;
-  text-align:center;
+.qr-box,
+.contact{
+background:rgba(255,255,255,.05);
+padding:40px;
+border-radius:28px;
 }
 
-.qr img{
-  width:100%;
-  max-width:420px;
-  border-radius:16px;
+.qr-box{
+text-align:center;
 }
 
-.contact-box{
-  background:white;
-  padding:40px;
-  border-radius:28px;
+.qr-box img{
+width:100%;
+max-width:380px;
+border-radius:18px;
 }
 
-.contact-box p{
-  margin-bottom:16px;
+.contact a{
+color:var(--accent);
+text-decoration:none;
 }
 
-.contact-box a{
-  color:#2563eb;
+.contact p{
+margin-bottom:20px;
 }
 
 .footer{
-  margin-top:120px;
-  text-align:center;
-  color:#6b7280;
+padding:80px 0;
+text-align:center;
+border-top:1px solid rgba(255,255,255,.08);
+color:var(--muted);
+}
+
+.footer h3{
+color:white;
+margin-bottom:10px;
 }
 
 .small{
-  font-size:.9rem;
-  color:#6b7280;
+font-size:.9rem;
+margin-top:10px;
 }
 
 </style>
 </head>
+
 <body>
 
+<section class="hero">
 <div class="container">
 
-<section class="hero">
+<h1>
+TOKEN<br>
+KANJOOS
+</h1>
 
-<h1>TOKEN<br>KANJOOS</h1>
+<div class="domain">
+tokenkanjoos.me
+</div>
 
-<p class="tagline">
-Because tokens are the new fuel.
+<div class="headline">
+We've all become the manual bridge between AI models.
+</div>
+
+<p>
+Copy. Paste. Re-explain. Repeat.
 </p>
-
-<div class="manifesto">
 
 <p>
 Stop paying to remind AI who you are.
-</p>
-
-<p>
-Move conversations between Claude and Gemini.
-Build long-term memory.
+Move conversations between AI systems.
+Build persistent memory.
 Reduce token waste.
-Everything runs locally.
 </p>
 
 <p>
-No cloud. No subscriptions. Your data stays with you.
+No cloud. No subscriptions. Runs locally.
 </p>
 
-</div>
+<div class="buttons">
 
-<div class="hero-buttons">
-
-<a class="button" href="#videos">
+<a href="#videos" class="btn btn-primary">
 Watch Demo
 </a>
 
-<a class="button secondary" href="#buy">
+<a href="#buy" class="btn btn-secondary">
 Get Access
+</a>
+
+<a href="https://github.com/navalsingh9" target="_blank" class="btn btn-secondary">
+GitHub
 </a>
 
 </div>
 
+</div>
 </section>
 
-<section class="section">
+<section>
+<div class="container">
 
-<h2>Products</h2>
+<h2 class="section-title">
+Origin Story
+</h2>
 
-<div class="products">
+<div class="origin">
+
+<div class="quote">
+"We've all been the manual bridge between AI models."
+</div>
+
+<p>
+In April 2026 I described a problem every heavy AI user eventually encounters:
+copying, pasting, reconstructing context, and losing momentum.
+</p>
+
+<p>
+The first solution became Switch.
+The next became MemOS Turbo.
+Both started from the same observation:
+context is expensive to rebuild.
+</p>
+
+<a href="https://www.linkedin.com/feed/update/urn:li:activity:7444708440830177280/" target="_blank">
+View Original LinkedIn Post →
+</a>
+
+<img src="linkedin-proof.png" alt="LinkedIn Proof">
+
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<h2 class="section-title">
+Products
+</h2>
+
+<div class="cards">
 
 <div class="card">
 
-<div class="price">₹500</div>
+<div class="price">
+₹500
+</div>
 
-<h3>Switch</h3>
+<h3>
+Switch
+</h3>
 
 <ul>
-<li>One-click AI handoff</li>
-<li>Move conversations between Claude and Gemini</li>
+<li>Claude ↔ Gemini handoff</li>
 <li>Continue when limits hit</li>
 <li>Export conversations</li>
+<li>Preserve strategic context</li>
 <li>Runs locally</li>
 </ul>
 
@@ -305,15 +393,19 @@ Get Access
 
 <div class="card">
 
-<div class="price">₹5000</div>
+<div class="price">
+₹5000
+</div>
 
-<h3>MemOS Turbo</h3>
+<h3>
+MemOS Turbo
+</h3>
 
 <ul>
 <li>Persistent AI memory</li>
 <li>Search old conversations</li>
-<li>Recall and reconstruct context</li>
-<li>Reduce token usage</li>
+<li>Context reconstruction</li>
+<li>Reduce token waste</li>
 <li>Runs locally</li>
 </ul>
 
@@ -321,43 +413,56 @@ Get Access
 
 </div>
 
+</div>
 </section>
 
-<section id="videos" class="section">
+<section id="videos">
 
-<h2>See It Working</h2>
+<div class="container">
+
+<h2 class="section-title">
+See It Working
+</h2>
 
 <div class="video-grid">
 
-<div class="video-card">
+<div class="video">
 
-<h3>22 Second Demo</h3>
+<img src="demo-switch.jpg" alt="Switch Demo">
+
+<h3>
+22 Second Demo
+</h3>
 
 <p>
-Tired of hitting AI message limits?
+Tired of hitting AI limits?
+Move conversations in a single click.
 </p>
 
-<br>
-
-<a href="https://www.youtube.com/watch?v=C8rhFOBO6KM">
-Watch →
+<a href="https://www.youtube.com/watch?v=C8rhFOBO6KM" target="_blank">
+Watch Demo →
 </a>
 
 </div>
 
-<div class="video-card">
+<div class="video">
 
-<h3>Export All Claude Chats</h3>
+<img src="demo-export.jpg" alt="Export Demo">
+
+<h3>
+Export ALL Claude Chats
+</h3>
 
 <p>
-Export every Claude conversation automatically.
+Fully automated export.
+No backend. Pure content.js.
 </p>
 
-<br>
-
-<a href="https://www.youtube.com/watch?v=hAKphCSYeIk">
-Watch →
+<a href="https://www.youtube.com/watch?v=hAKphCSYeIk" target="_blank">
+Watch Demo →
 </a>
+
+</div>
 
 </div>
 
@@ -365,27 +470,32 @@ Watch →
 
 </section>
 
-<section id="buy" class="section">
+<section id="buy">
 
-<h2>Get Access</h2>
+<div class="container">
+
+<h2 class="section-title">
+Get Access
+</h2>
 
 <div class="payment">
 
-<div class="qr">
+<div class="qr-box">
 
-<img src="qr.png" alt="UPI QR Code">
+<img src="qr.png" alt="UPI QR">
 
-<p>
-UPI ID: singhn9@okhdfcbank
+<p style="margin-top:20px;">
+UPI ID:
+<strong>singhn9@okhdfcbank</strong>
 </p>
 
 <p>
-Send payment screenshot on WhatsApp.
+Scan with any UPI app
 </p>
 
 </div>
 
-<div class="contact-box">
+<div class="contact">
 
 <p>
 <strong>WhatsApp</strong><br>
@@ -408,14 +518,18 @@ singhn9@gmail.com
 </a>
 </p>
 
+<br>
+
 <p>
-After payment, send a screenshot and mention:
+After payment send a screenshot and mention:
 </p>
 
 <ul>
-<li>Switch (₹500)</li>
-<li>MemOS Turbo (₹5000)</li>
+<li>Switch — ₹500</li>
+<li>MemOS Turbo — ₹5000</li>
 </ul>
+
+</div>
 
 </div>
 
@@ -423,19 +537,29 @@ After payment, send a screenshot and mention:
 
 </section>
 
-<div class="footer">
+<footer class="footer">
+
+<div class="container">
+
+<h3>
+Built by Naval Singh
+</h3>
 
 <p>
-Built by Naval Singh
+Because tokens are the new fuel.
 </p>
 
-<p class="small">
-Claude and Gemini are trademarks of their respective owners. Logos, names and marks are used solely for identification and interoperability purposes.
-</p>
+<div class="small">
+No cloud. No subscriptions. Runs locally.
+</div>
 
+<div class="small">
+Claude and Gemini are trademarks of their respective owners. Names, logos and marks are used solely for identification and interoperability purposes.
 </div>
 
 </div>
+
+</footer>
 
 </body>
 </html>

@@ -17,258 +17,485 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
---bg:#0a0f1c;
---card:#121826;
---text:#ffffff;
---muted:#9aa4b2;
---accent:#63e6be;
+:root {
+    --bg: #0b0d12;
+    --card: rgba(255, 255, 255, 0.02);
+    --card-border: rgba(255, 255, 255, 0.05);
+    --text: #f4f5f6;
+    --muted: #8a939e;
+    
+    /* Summer Wispy Accent Palette */
+    --accent-solstice: #ff9e64; /* Warm sunset peach */
+    --accent-breeze: #63e6be;    /* Fresh mint coast */
+    --glow-orange: rgba(255, 158, 100, 0.08);
+    --glow-mint: rgba(99, 230, 190, 0.06);
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
+    background: var(--bg);
 }
 
-body{
-font-family:Inter,sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.7;
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
 }
 
-.container{
-width:min(1200px,92%);
-margin:auto;
+/* Wispy Summer Ambient Glows */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
 }
 
-section{
-padding:100px 0;
+body::before {
+    top: -100px;
+    right: -100px;
+    background: var(--glow-orange);
 }
 
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
+body::after {
+    top: 40%;
+    left: -200px;
+    background: var(--glow-mint);
 }
 
-.hero h1{
-font-size:clamp(4rem,12vw,10rem);
-line-height:.9;
-font-weight:900;
-margin-bottom:20px;
+.ambient-glow-3 {
+    position: absolute;
+    bottom: 10%;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: var(--glow-orange);
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    pointer-events: none;
 }
 
-.hero .domain{
-color:var(--accent);
-font-weight:700;
-font-size:1.1rem;
-margin-bottom:30px;
+.container {
+    width: min(1140px, 90%);
+    margin: auto;
 }
 
-.hero .headline{
-font-size:clamp(1.5rem,3vw,2.6rem);
-font-weight:700;
-max-width:900px;
-margin-bottom:20px;
+section {
+    padding: 120px 0;
 }
 
-.hero p{
-max-width:750px;
-font-size:1.15rem;
-color:var(--muted);
-margin-bottom:10px;
+/* Hero Section */
+.hero {
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
-.buttons{
-margin-top:40px;
-display:flex;
-gap:15px;
-flex-wrap:wrap;
+.hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #fff 30%, var(--accent-solstice) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.btn{
-padding:16px 28px;
-border-radius:999px;
-text-decoration:none;
-font-weight:700;
-display:inline-block;
+.hero .domain {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--accent-breeze);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    display: inline-block;
+    border-bottom: 1px dashed rgba(99, 230, 190, 0.3);
+    padding-bottom: 4px;
 }
 
-.btn-primary{
-background:var(--accent);
-color:black;
+.hero .headline {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 500;
+    max-width: 800px;
+    margin-bottom: 24px;
+    color: #e2e8f0;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
 }
 
-.btn-secondary{
-border:1px solid rgba(255,255,255,.15);
-color:white;
+.hero p {
+    max-width: 650px;
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 12px;
 }
 
-.section-title{
-font-size:clamp(2.2rem,5vw,4rem);
-margin-bottom:50px;
+.hero p.highlight {
+    color: var(--text);
+    font-weight: 500;
+    border-left: 2px solid var(--accent-solstice);
+    padding-left: 14px;
+    margin: 24px 0;
 }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-gap:30px;
+.buttons {
+    margin-top: 48px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
-.card{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-padding:40px;
-border-radius:28px;
-backdrop-filter:blur(20px);
+.btn {
+    padding: 14px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.price{
-font-size:3rem;
-font-weight:900;
-color:var(--accent);
+.btn-primary {
+    background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
+    color: #0b0d12;
+    box-shadow: 0 4px 20px rgba(255,255,255,0.1);
 }
 
-.card h3{
-font-size:2rem;
-margin:15px 0 25px;
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(255,255,255,0.15);
 }
 
-.card li{
-margin-bottom:12px;
-color:var(--muted);
+.btn-secondary {
+    border: 1px solid var(--card-border);
+    background: rgba(255, 255, 255, 0.02);
+    color: white;
+    backdrop-filter: blur(8px);
 }
 
-.origin{
-background:rgba(255,255,255,.05);
-padding:40px;
-border-radius:28px;
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
 }
 
-.quote{
-font-size:2rem;
-font-weight:800;
-margin-bottom:20px;
+/* Sections Styling */
+.section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 60px;
 }
 
-.origin p{
-color:var(--muted);
-margin-bottom:20px;
+.section-title span {
+    color: var(--accent-solstice);
 }
 
-.origin img{
-width:100%;
-border-radius:20px;
-margin-top:30px;
+/* Bento-inspired Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
 }
 
-.origin a{
-color:var(--accent);
-font-weight:700;
-text-decoration:none;
+.card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 48px;
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    transition: border-color 0.4s setup, transform 0.4s;
+    position: relative;
+    overflow: hidden;
 }
 
-.video-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-gap:30px;
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(255,255,255,0.04), transparent 40%);
+    pointer-events: none;
 }
 
-.video{
-background:rgba(255,255,255,.05);
-padding:25px;
-border-radius:28px;
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-4px);
 }
 
-.video img{
-width:100%;
-border-radius:18px;
-margin-bottom:20px;
-transition:.3s;
+.price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
 }
 
-.video:hover img{
-transform:scale(1.02);
+.card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
 }
 
-.video h3{
-margin-bottom:10px;
+.card:nth-child(1) h3 { color: var(--accent-breeze); }
+.card:nth-child(2) h3 { color: var(--accent-solstice); }
+
+.card ul {
+    list-style: none;
 }
 
-.video p{
-color:var(--muted);
-margin-bottom:15px;
+.card li {
+    margin-bottom: 16px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05rem;
 }
 
-.video a{
-color:var(--accent);
-font-weight:700;
-text-decoration:none;
+.card li::before {
+    content: "→";
+    color: rgba(255, 255, 255, 0.3);
 }
 
-.payment{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
+/* Origin Section */
+.origin {
+    background: linear-gradient(180deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.03) 100%);
+    border: 1px solid var(--card-border);
+    padding: 50px;
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+}
+
+.quote {
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+    color: #fff;
+}
+
+.origin p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    max-width: 850px;
+}
+
+.origin img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin-top: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    opacity: 0.85;
+}
+
+.origin a {
+    color: var(--accent-solstice);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.origin a:hover {
+    border-color: var(--accent-solstice);
+}
+
+/* Video Grid (Non-clickable Thumbnails) */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+}
+
+.video {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 24px;
+    border-radius: 24px;
+}
+
+.video-thumb-wrapper {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #141822;
+    cursor: default; /* Enforces that it does not feel clickable */
+}
+
+.video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    pointer-events: none; /* Disables interaction dragging/clicking completely */
+}
+
+.video h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.video p {
+    color: var(--muted);
+    margin-bottom: 24px;
+}
+
+.video a {
+    color: var(--accent-breeze);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.video a:hover {
+    text-decoration: underline;
+}
+
+/* Payment Layout */
+.payment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
 }
 
 @media(max-width:900px){
-.payment{
-grid-template-columns:1fr;
-}
+    .payment { grid-template-columns: 1fr; }
 }
 
-.qr-box,
-.contact{
-background:rgba(255,255,255,.05);
-padding:40px;
-border-radius:28px;
+.qr-box, .contact {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 48px;
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
 }
 
-.qr-box{
-text-align:center;
+.qr-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.qr-box img{
-width:100%;
-max-width:380px;
-border-radius:18px;
+.qr-box img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 16px;
+    border: 8px solid rgba(255, 255, 255, 0.03);
 }
 
-.contact a{
-color:var(--accent);
-text-decoration:none;
+.contact a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
 }
 
-.contact p{
-margin-bottom:20px;
+.contact a:hover {
+    color: var(--accent-solstice);
 }
 
-.footer{
-padding:80px 0;
-text-align:center;
-border-top:1px solid rgba(255,255,255,.08);
-color:var(--muted);
+.contact p {
+    margin-bottom: 24px;
+    font-size: 1.05rem;
 }
 
-.footer h3{
-color:white;
-margin-bottom:10px;
+.contact strong {
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
 }
 
-.small{
-font-size:.9rem;
-margin-top:10px;
+.contact ul {
+    list-style: none;
+    margin-top: 16px;
+}
+
+.contact li {
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--accent-breeze);
+}
+
+/* Footer */
+.footer {
+    padding: 100px 0;
+    text-align: center;
+    border-top: 1px solid var(--card-border);
+    color: var(--muted);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.footer h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.small {
+    font-size: 0.85rem;
+    margin-top: 16px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* Modern Minimal Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 </style>
@@ -279,49 +506,33 @@ margin-top:10px;
 <section class="hero">
 <div class="container">
 
-<h1>
-TOKEN<br>
-KANJOOS
-</h1>
+    <div class="domain">tokenkanjoos.me</div>
+    
+    <h1>
+    TOKEN<br>
+    KANJOOS
+    </h1>
 
-<div class="domain">
-tokenkanjoos.me
-</div>
+    <div class="headline">
+    We've all become the manual bridge between AI models.
+    </div>
 
-<div class="headline">
-We've all become the manual bridge between AI models.
-</div>
+    <p>Copy. Paste. Re-explain. Repeat.</p>
+    
+    <p class="highlight">
+    Stop paying to remind AI who you are. Move conversations smoothly between independent frontier models.
+    </p>
 
-<p>
-Copy. Paste. Re-explain. Repeat.
-</p>
+    <p>No cloud layers. No enterprise corporate tracking subscriptions. Built for absolute data privacy—runs entirely locally.</p>
 
-<p>
-Stop paying to remind AI who you are.
-Move conversations between AI systems.
-Build persistent memory.
-Reduce token waste.
-</p>
-
-<p>
-No cloud. No subscriptions. Runs locally.
-</p>
-
-<div class="buttons">
-
-<a href="#videos" class="btn btn-primary">
-Watch Demo
-</a>
-
-<a href="#buy" class="btn btn-secondary">
-Get Access
-</a>
-
-<a href="https://github.com/navalsingh9" target="_blank" class="btn btn-secondary">
-GitHub
-</a>
-
-</div>
+    <div class="buttons">
+        <a href="#videos" class="btn btn-primary">Watch Demo</a>
+        <a href="#buy" class="btn btn-secondary">Get Access</a>
+        <a href="https://github.com/navalsingh9" target="_blank" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+        </a>
+    </div>
 
 </div>
 </section>
@@ -329,35 +540,28 @@ GitHub
 <section>
 <div class="container">
 
-<h2 class="section-title">
-Origin Story
-</h2>
+    <h2 class="section-title">Origin <span>Story</span></h2>
 
-<div class="origin">
+    <div class="origin">
+        <div class="quote">
+        "We've all been the manual bridge between AI models."
+        </div>
 
-<div class="quote">
-"We've all been the manual bridge between AI models."
-</div>
+        <p>
+        A couple of months ago in April 2026, I described a problem every heavy AI operator eventually encounters: 
+        copying context panels, dragging multi-turn system parameters across interfaces, and consistently draining momentum.
+        </p>
 
-<p>
-In April 2026 I described a problem every heavy AI user eventually encounters:
-copying, pasting, reconstructing context, and losing momentum.
-</p>
+        <p>
+        The first operational answer became <strong>Switch</strong>. The next naturally scaled into <strong>MemOS Turbo</strong>. Both products started from the exact same fundamental design parameter: reconstructed runtime context is an expensive waste of cognitive and financial tokens.
+        </p>
 
-<p>
-The first solution became Switch.
-The next became MemOS Turbo.
-Both started from the same observation:
-context is expensive to rebuild.
-</p>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7444708440830177280/" target="_blank">
+        View Original Post on LinkedIn →
+        </a>
 
-<a href="https://www.linkedin.com/feed/update/urn:li:activity:7444708440830177280/" target="_blank">
-View Original LinkedIn Post →
-</a>
-
-<img src="linkedin-proof.png" alt="LinkedIn Proof">
-
-</div>
+        <img src="linkedin-proof.png" alt="LinkedIn Validation Context">
+    </div>
 
 </div>
 </section>
@@ -365,201 +569,139 @@ View Original LinkedIn Post →
 <section>
 <div class="container">
 
-<h2 class="section-title">
-Products
-</h2>
+    <h2 class="section-title">The <span>Core Core Engine</span></h2>
 
-<div class="cards">
+    <div class="cards">
+        <div class="card">
+            <div class="price">₹500</div>
+            <h3>Switch</h3>
+            <ul>
+                <li>Claude ↔ Gemini seamless handoff</li>
+                <li>Continue threads instantly when processing rate limits trigger</li>
+                <li>Clean-file markdown conversation exporting</li>
+                <li>Preserve strategic architectural context</li>
+                <li>Runs entirely locally on-device</li>
+            </ul>
+        </div>
 
-<div class="card">
-
-<div class="price">
-₹500
-</div>
-
-<h3>
-Switch
-</h3>
-
-<ul>
-<li>Claude ↔ Gemini handoff</li>
-<li>Continue when limits hit</li>
-<li>Export conversations</li>
-<li>Preserve strategic context</li>
-<li>Runs locally</li>
-</ul>
-
-</div>
-
-<div class="card">
-
-<div class="price">
-₹5000
-</div>
-
-<h3>
-MemOS Turbo
-</h3>
-
-<ul>
-<li>Persistent AI memory</li>
-<li>Search old conversations</li>
-<li>Context reconstruction</li>
-<li>Reduce token waste</li>
-<li>Runs locally</li>
-</ul>
-
-</div>
-
-</div>
+        <div class="card">
+            <div class="price">₹5000</div>
+            <h3>MemOS Turbo</h3>
+            <ul>
+                <li>Persistent multi-model continuous context</li>
+                <li>Vectorized deep-search historic logic branches</li>
+                <li>Dynamic cross-session reconstruction</li>
+                <li>Mitigate aggressive token overhead waste</li>
+                <li>Local instance sandbox security</li>
+            </ul>
+        </div>
+    </div>
 
 </div>
 </section>
 
 <section id="videos">
-
 <div class="container">
 
-<h2 class="section-title">
-See It Working
-</h2>
+    <h2 class="section-title">See It <span>Working</span></h2>
 
-<div class="video-grid">
+    <div class="video-grid">
+        <div class="video">
+            <div class="video-thumb-wrapper">
+                <img src="demo-switch.jpg" alt="Switch Demo Canvas View">
+            </div>
+            <h3>22 Second Speed Demo</h3>
+            <p>Tired of hitting aggressive runtime context thresholds? Migrate active logical pipelines in one clean motion.</p>
+            <a href="https://www.youtube.com/watch?v=C8rhFOBO6KM" target="_blank">Watch Live Implementation →</a>
+        </div>
 
-<div class="video">
-
-<img src="demo-switch.jpg" alt="Switch Demo">
-
-<h3>
-22 Second Demo
-</h3>
-
-<p>
-Tired of hitting AI limits?
-Move conversations in a single click.
-</p>
-
-<a href="https://www.youtube.com/watch?v=C8rhFOBO6KM" target="_blank">
-Watch Demo →
-</a>
-
-</div>
-
-<div class="video">
-
-<img src="demo-export.jpg" alt="Export Demo">
-
-<h3>
-Export ALL Claude Chats
-</h3>
-
-<p>
-Fully automated export.
-No backend. Pure content.js.
-</p>
-
-<a href="https://www.youtube.com/watch?v=hAKphCSYeIk" target="_blank">
-Watch Demo →
-</a>
+        <div class="video">
+            <div class="video-thumb-wrapper">
+                <img src="demo-export.jpg" alt="Export Utility Interface">
+            </div>
+            <h3>Export All Claude Workspaces</h3>
+            <p>Fully decoupled automated canvas exports. Absolutely zero backends required. Pure content.js integration.</p>
+            <a href="https://www.youtube.com/watch?v=hAKphCSYeIk" target="_blank">Watch Live Implementation →</a>
+        </div>
+    </div>
 
 </div>
-
-</div>
-
-</div>
-
 </section>
 
 <section id="buy">
-
 <div class="container">
 
-<h2 class="section-title">
-Get Access
-</h2>
+    <h2 class="section-title">Get <span>Immediate Access</span></h2>
 
-<div class="payment">
+    <div class="payment">
+        <div class="qr-box">
+            <img src="qr.png" alt="UPI Native Payment QR Gate">
+            <p style="margin-top:24px; color:var(--muted); font-size:0.9rem;">DIRECT UPI ID</p>
+            <p style="font-size: 1.15rem; color:#fff; font-family:'Space Grotesk', sans-serif; margin-top:4px;">
+                <strong>singhn9@okhdfcbank</strong>
+            </p>
+            <p style="color: var(--accent-breeze); font-size:0.85rem; margin-top:8px;">Scan via any production UPI applications</p>
+        </div>
 
-<div class="qr-box">
+        <div class="contact">
+            <p>
+                <strong>Secure WhatsApp Direct</strong>
+                <a href="https://wa.me/918105484499">+91 81054 84499</a>
+            </p>
 
-<img src="qr.png" alt="UPI QR">
+            <p>
+                <strong>Global Settlements (PayPal)</strong>
+                <a href="https://www.paypal.com/paypalme/singhn9">paypal.me/singhn9</a>
+            </p>
 
-<p style="margin-top:20px;">
-UPI ID:
-<strong>singhn9@okhdfcbank</strong>
-</p>
+            <p>
+                <strong>Primary Comm Node (Email)</strong>
+                <a href="mailto:tokenkanjoos@gmail.com">tokenkanjoos@gmail.com</a>
+            </p>
 
-<p>
-Scan with any UPI app
-</p>
-
-</div>
-
-<div class="contact">
-
-<p>
-<strong>WhatsApp</strong><br>
-<a href="https://wa.me/918105484499">
-+91 81054 84499
-</a>
-</p>
-
-<p>
-<strong>PayPal</strong><br>
-<a href="https://www.paypal.com/paypalme/singhn9">
-paypal.me/singhn9
-</a>
-</p>
-
-<p>
-<strong>Email</strong><br>
-<a href="mailto:singhn9@gmail.com">
-singhn9@gmail.com
-</a>
-</p>
-
-<br>
-
-<p>
-After payment send a screenshot and mention:
-</p>
-
-<ul>
-<li>Switch — ₹500</li>
-<li>MemOS Turbo — ₹5000</li>
-</ul>
+            <p style="margin-top: 32px; font-weight:600; color:#fff;">
+                To Provision Keys:
+            </p>
+            <p style="color:var(--muted); font-size:0.95rem;">
+                Dispatch verification receipts indicating requested product line:
+            </p>
+            <ul>
+                <li>Switch Component Allocation — ₹500</li>
+                <li>MemOS Turbo Architecture — ₹5000</li>
+            </ul>
+        </div>
+    </div>
 
 </div>
-
-</div>
-
-</div>
-
 </section>
 
+<div class="ambient-glow-3"></div>
+
 <footer class="footer">
-
 <div class="container">
-
-<h3>
-Built by Naval Singh
-</h3>
-
-<p>
-Because tokens are the new fuel.
-</p>
-
-<div class="small">
-No cloud. No subscriptions. Runs locally.
+    <h3>Engineered by Naval Singh</h3>
+    <p style="font-size: 1.05rem; color: #fff;">Because architecture shifts when context tokens are the primary fuel matrix.</p>
+    
+    <div class="small" style="color: var(--accent-solstice); font-weight: 500;">
+        Zero cloud persistence. Zero monthly recurring dependencies. Runs native on local host.
+    </div>
+    
+    <div class="small">
+        Claude and Gemini are protected trademarks of Anthropic PBC and Google LLC. Operational titles, logos, and ecosystem structural metadata are used exclusively strictly for cross-compatibility identification profiles under interoperability logic.
+    </div>
 </div>
-
-<div class="small">
-Claude and Gemini are trademarks of their respective owners. Names, logos and marks are used solely for identification and interoperability purposes.
-</div>
-
-</div>
-
 </footer>
+
+<script>
+// Sleek micro-interaction: Subtle interactive radial spotlight gradient over the grid borders
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+    });
+});
+</script>
 
 </body>
 </html>

@@ -1,19 +1,297 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Token Kanjoos</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Token Kanjoos</title>
+
+<style>
+
+:root{
+  --bg:#f8f7f2;
+  --text:#1f2937;
+  --accent:#2563eb;
+  --card:#ffffff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family: Georgia, serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:80px 24px;
+}
+
+.hero{
+  min-height:70vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.hero h1{
+  font-size:clamp(3rem,8vw,6rem);
+  margin-bottom:20px;
+}
+
+.tagline{
+  font-size:1.5rem;
+  opacity:.8;
+  max-width:700px;
+}
+
+.manifesto{
+  margin-top:50px;
+  max-width:800px;
+  font-size:1.2rem;
+}
+
+.products{
+  margin-top:100px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:white;
+  border-radius:24px;
+  padding:40px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.price{
+  font-size:3rem;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.card h2{
+  margin-bottom:20px;
+}
+
+.button{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 24px;
+  border-radius:999px;
+  background:black;
+  color:white;
+  text-decoration:none;
+}
+
+.videos{
+  margin-top:120px;
+}
+
+.videos h2{
+  margin-bottom:30px;
+  font-size:2.5rem;
+}
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+}
+
+.video{
+  background:white;
+  border-radius:20px;
+  padding:24px;
+}
+
+.qr-section{
+  margin-top:120px;
+  text-align:center;
+}
+
+.qr-section img{
+  max-width:320px;
+  width:100%;
+  border-radius:24px;
+}
+
+.contact{
+  margin-top:20px;
+}
+
+.footer{
+  margin-top:120px;
+  text-align:center;
+  opacity:.7;
+}
+
+a{
+  color:#2563eb;
+}
+
+</style>
 </head>
+
 <body>
-  <h1>Token Kanjoos</h1>
 
-  <p>Because tokens are the new fuel.</p>
+<div class="container">
 
-  <h2>₹500 — Switch</h2>
-  <p>Move conversations between Claude, Gemini and ChatGPT.</p>
+<section class="hero">
 
-  <h2>₹5000 — MemOS Turbo</h2>
-  <p>Persistent AI memory without resending your entire history.</p>
+<h1>Token Kanjoos</h1>
 
-  <p>No cloud. No subscriptions. Runs locally.</p>
+<p class="tagline">
+Because tokens are the new fuel.
+</p>
+
+<div class="manifesto">
+
+<p>
+Stop paying to remind AI who you are.
+</p>
+
+<p>
+Move conversations between Claude, Gemini and ChatGPT. Build long-term memory. Reduce token waste. Everything runs locally.
+</p>
+
+<p>
+No cloud. No subscriptions. Your data stays with you.
+</p>
+
+</div>
+
+</section>
+
+<section class="products">
+
+<div class="card">
+
+<div class="price">₹500</div>
+
+<h2>Switch</h2>
+
+<p>Move conversations between Claude, Gemini and ChatGPT.</p>
+
+<p>Continue working when one model hits limits.</p>
+
+<p>Export conversations for future use.</p>
+
+<a class="button" href="https://wa.me/918105484499">
+Get Switch
+</a>
+
+</div>
+
+<div class="card">
+
+<div class="price">₹5000</div>
+
+<h2>MemOS Turbo</h2>
+
+<p>Persistent AI memory.</p>
+
+<p>Search old conversations.</p>
+
+<p>Recover forgotten context automatically.</p>
+
+<p>Reduce token usage dramatically.</p>
+
+<a class="button" href="https://wa.me/918105484499">
+Get MemOS Turbo
+</a>
+
+</div>
+
+</section>
+
+<section class="videos">
+
+<h2>See it working</h2>
+
+<div class="video-grid">
+
+<div class="video">
+
+<h3>22 Second Demo</h3>
+
+<p>Tired of hitting AI message limits?</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=C8rhFOBO6KM">
+Watch Demo →
+</a>
+</p>
+
+</div>
+
+<div class="video">
+
+<h3>Export All Claude Chats</h3>
+
+<p>Automatic export of all Claude conversations.</p>
+
+<p>
+<a href="https://www.youtube.com/watch?v=hAKphCSYeIk">
+Watch Demo →
+</a>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="qr-section">
+
+<h2>Pay via UPI</h2>
+
+<p>Scan and send payment screenshot on WhatsApp.</p>
+
+<br>
+
+<img src="qr.png" alt="UPI QR">
+
+<div class="contact">
+
+<p>
+WhatsApp:
+<a href="https://wa.me/918105484499">
++91 81054 84499
+</a>
+</p>
+
+<p>
+PayPal:
+<a href="https://www.paypal.com/paypalme/singhn9">
+paypal.me/singhn9
+</a>
+</p>
+
+</div>
+
+</section>
+
+<div class="footer">
+
+<p>Built by Naval Singh</p>
+
+<p>Token Kanjoos • Memory over repetition</p>
+
+</div>
+
+</div>
+
 </body>
 </html>
+```
